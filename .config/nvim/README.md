@@ -49,3 +49,38 @@ This document outlines custom keyboard mappings configured for NeoVim, improving
 
 - **Ctrl + x**: Switch from terminal mode to normal mode.
 
+---
+
+## Plugin Mappings
+
+This document provides an overview of custom keyboard mappings for various Neovim plugins, enhancing functionality related to version control, searching, commenting, and file navigation.
+
+### Git and Version Control
+
+- **Leader + gd**: Open the Diffview panel to show the current git diff.
+- **Leader + gc**: Close the Diffview panel.
+- **Leader + ph**: Preview the git hunk at the cursor using `gitsigns`.
+- **Leader + cm**: Open a Telescope picker for git commits. Selecting a commit opens a Diffview comparing the commit against its parent.
+
+### Searching and Navigating
+
+- **Leader + ff**: Open Telescope to find files, including hidden and ignored files.
+- **Leader + fw**: Open Telescope to perform a live grep search in the project.
+- **Leader + ft**: Use Telescope to search for TODO comments in the codebase.
+
+### Commenting
+
+- **Leader + /**: Toggle commenting for the current line in normal mode.
+- **Leader + /** (Visual mode): Toggle commenting for selected lines.
+
+### Language Server Protocol (LSP) Mappings
+
+- **Leader + ca**: Trigger the code action menu for the current cursor position.
+- **K**: Show hover information for the symbol under the cursor.
+- **gd**: Go to the definition of the symbol under the cursor.
+
+### File Exploration
+
+- **Ctrl + n**: Toggle the NvimTree file explorer.
+- **Leader + e**: Focus the NvimTree file explorer.
+
