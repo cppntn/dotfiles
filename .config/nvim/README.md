@@ -2,6 +2,8 @@
 
 This document outlines custom keyboard mappings configured for NeoVim, improving efficiency and productivity. The mappings are organized by mode: Insert, Normal, Visual, and Terminal.
 
+In all the mappings `Leader` is the `Space` key.
+
 ## Insert Mode Mappings
 
 - **Ctrl + a**: Move the cursor to the beginning of the line.
