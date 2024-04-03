@@ -35,10 +35,11 @@ return {
 
       -- Assign the custom function to a command for easy access
       vim.api.nvim_create_user_command('GitCommitsDiffview', git_commits_with_diffview, {})
-      vim.keymap.set('n', '<leader>cm', ':GitCommitsDiffview <CR>', {})
+      vim.keymap.set('n', '<leader>cm', ':GitCommitsDiffview <CR>', { silent = true })
       -- Keymaps
-      vim.keymap.set('n', '<leader>ff', ':Telescope find_files follow=true no_ignore=true hidden=true <CR>', {})
-      vim.keymap.set('n', '<leader>fw', ':Telescope live_grep <CR>', {})
+      vim.keymap.set('n', '<leader>ff', ':Telescope find_files follow=true no_ignore=true hidden=true <CR>',
+        { silent = true })
+      vim.keymap.set('n', '<leader>fw', ':Telescope live_grep <CR>', { silent = true })
     end
   },
   {
@@ -60,7 +61,7 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("todo-comments").setup()
-      vim.keymap.set('n', '<leader>ft', ':TodoTelescope <CR>', {})
+      vim.keymap.set('n', '<leader>ft', ':TodoTelescope <CR>', { silent = true })
     end
   }
 }

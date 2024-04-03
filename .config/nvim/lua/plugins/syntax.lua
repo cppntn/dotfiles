@@ -48,9 +48,9 @@ return {
           }
         }
       })
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-      vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { silent = true })
+      vim.keymap.set('n', 'K', vim.lsp.buf.hover, { silent = true })
+      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true })
     end
   },
   -- comments
@@ -65,9 +65,10 @@ return {
       { "gb",  mode = "x",          desc = "Comment toggle blockwise (visual)" },
     },
     init = function()
-      vim.keymap.set('n', '<leader>/', require("Comment.api").toggle.linewise.current, { desc = "Toggle comment" })
+      vim.keymap.set('n', '<leader>/', require("Comment.api").toggle.linewise.current,
+        { desc = "Toggle comment", silent = true })
       vim.keymap.set('v', '<leader>/', ":<C-u>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-        { desc = "Toggle comment" })
+        { desc = "Toggle comment", silent = true })
     end,
     config = function()
       require("Comment").setup()

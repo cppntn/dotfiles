@@ -35,7 +35,8 @@ return {
           untracked = { text = "│" },
         }
       })
-      vim.keymap.set('n', '<leader>ph', require("gitsigns").preview_hunk, { noremap = true, nowait = true })
+      vim.keymap.set('n', '<leader>ph', require("gitsigns").preview_hunk,
+        { noremap = true, nowait = true, silent = true })
     end
   }
 }
