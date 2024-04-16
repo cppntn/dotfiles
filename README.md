@@ -1,6 +1,14 @@
 # MacOS Setup and dotfiles
 
-1) Install command line tools on MacOS
+1) Install command line tools on MacOS, and install Jetbrains Fonts. You can find them into `jetbrains_fonts`:
+
+```
+jetbrains_fonts
+├── JetBrainsMonoNLNerdFont-Bold.ttf
+├── JetBrainsMonoNLNerdFont-Italic.ttf
+├── JetBrainsMonoNLNerdFont-Regular.ttf
+└── JetBrainsMonoNLNerdFont-SemiBold.ttf
+```
 
 2) Install alacritty
 
