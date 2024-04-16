@@ -6,11 +6,6 @@ return {
     config = function()
       vim.keymap.set('n', '<leader>gd', ':DiffviewOpen <CR>', { silent = true })
       vim.keymap.set('n', '<leader>gc', ':DiffviewClose <CR>', { silent = true })
-      -- vim.api.nvim_set_hl(0, 'DiffviewDiffAdd', { fg = 'black', bg = 'green' })
-      -- vim.api.nvim_set_hl(0, 'DiffviewDiffChange', { fg = 'black', bg = '#d3d3d3' })
-      -- vim.api.nvim_set_hl(0, 'DiffviewDiffModified', { fg = 'black', bg = 'orange' })
-      -- vim.api.nvim_set_hl(0, 'DiffviewDiffDelete', { fg = 'black', bg = 'red' })
-      -- vim.api.nvim_set_hl(0, 'DiffviewDiffAddAsDelete', { fg = 'black', bg = 'red' })
     end
   },
   -- gitsigns
