@@ -106,9 +106,11 @@ alias v='nvim'
 cd ~
 git clone https://github.com/cppntn/dotfiles ~/dotfiles
 mkdir -p .config/
+mkdir -p .ipython/profile_default
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/.config/nvim ~/.config/nvim
 ln -s ~/dotfiles/.config/alacritty ~/.config/alacritty
+ln -s ~/dotfiles/.ipython/profile_default/ipython_config.py ~/.ipython/profile_default/ipython_config.py 
 ```
 
 6) Other useful stuff: 
