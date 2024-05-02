@@ -85,7 +85,7 @@ export PATH="/opt/homebrew/sbin:$PATH"
 export PATH="$(brew --prefix)/opt/python@3.11/libexec/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
-
+export PATH="/usr/local/go/bin/go:$PATH"
 export SYSTEM_VERSION_COMPAT=1
 
 export HOMEBREW_OPT="/opt/homebrew/opt"
@@ -101,12 +101,13 @@ nvim() {
     elif [[ -z $1 ]]; then
         command nvim +'lua require("nvim-tree.api").tree.open()'
     else
-        echo "The specified path is not a valid directory or file."
+        command nvim "$1"
     fi
 }
 
+alias vim='nvim'
+alias vi='nvim'
 alias v='nvim'
-
 ```
 
 5) Set dotfiles symlinks for tmux, nvim and alacritty
