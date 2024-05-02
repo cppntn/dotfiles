@@ -36,6 +36,14 @@ brew install hashicorp/tap/terraform
 brew install --cask spaceid
 ```
 
+Install `golang` from: https://go.dev/dl/
+Then install the linter:
+
+```bash
+# go install golang.org/x/tools/gopls@latest
+brew install gopls
+```
+
 4) Install ZSH and Oh My Zsh
 
 ```bash

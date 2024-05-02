@@ -15,7 +15,8 @@ return {
           "c",
           "markdown",
           "python",
-          "yaml"
+          "yaml",
+          "go"
         },
         indent = {
           enable = true
@@ -34,6 +35,17 @@ return {
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({
         capabilities = capabilities
+      })
+      lspconfig.gopls.setup({
+        settings = {
+          gopls = {
+            analyses = {
+              unusedparams = true,
+            },
+            staticcheck = true,
+            gofumpt = true,
+          },
+        },
       })
       lspconfig.pyright.setup({
         capabilities = capabilities,
