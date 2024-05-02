@@ -50,6 +50,7 @@ return {
       vim.keymap.set('n', '<leader>ff', ':Telescope find_files follow=true no_ignore=true hidden=true <CR>',
         { silent = true })
       vim.keymap.set('n', '<leader>fw', ':Telescope live_grep <CR>', { silent = true })
+      vim.keymap.set('n', '<leader>fb', ':Telescope buffers <CR>', { silent = true })
     end
   },
   {
