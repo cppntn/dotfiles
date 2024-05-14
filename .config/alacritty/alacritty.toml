@@ -20,7 +20,7 @@ style = "Italic"
 
 [window]
 decorations = "buttonless"
-dynamic_padding = false
+dynamic_padding = true
 
 [window.padding]
 y = 7
