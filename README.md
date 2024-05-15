@@ -90,7 +90,6 @@ export PATH="/usr/local/go/bin/go:$PATH"
 export SYSTEM_VERSION_COMPAT=1
 
 export HOMEBREW_OPT="/opt/homebrew/opt"
-export JAVA_HOME="$HOMEBREW_OPT/openjdk/"
 
 alias dotfiles='cd $HOME/dotfiles'
 
