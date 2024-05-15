@@ -34,6 +34,7 @@ brew install jq
 brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
 brew install --cask spaceid
+brew install kubectl 
 ```
 
 Install `golang` from: https://go.dev/dl/
@@ -61,7 +62,7 @@ You can put this into `.zshrc`:
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="muse"
 
-plugins=(git)
+plugins=(git, kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
