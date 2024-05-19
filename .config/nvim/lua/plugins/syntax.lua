@@ -13,6 +13,8 @@ return {
           "query",
           "lua",
           "c",
+          "hcl",
+          "ruby",
           "markdown",
           "python",
           "yaml",
