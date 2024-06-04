@@ -45,6 +45,12 @@ Then install the linter:
 brew install gopls
 ```
 
+Instal aws cli:
+
+```
+curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+```
+
 4) Install ZSH and Oh My Zsh
 
 ```bash
