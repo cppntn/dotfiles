@@ -1,4 +1,8 @@
 return {
+  -- copilot
+  {
+    "github/copilot.vim"
+  },
   -- treesitter
   {
     "nvim-treesitter/nvim-treesitter",
