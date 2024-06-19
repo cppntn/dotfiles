@@ -36,6 +36,7 @@ brew install hashicorp/tap/terraform
 brew install --cask spaceid
 brew install kubectl 
 brew install rust 
+brew install mysql-client
 ```
 
 Install `golang` from: https://go.dev/dl/
