@@ -39,6 +39,8 @@ return {
     priority = 1000,
     config = function()
       vim.cmd.colorscheme "catppuccin-mocha"
+      vim.keymap.set('n', '<leader>td', ':colorscheme catppuccin-mocha<CR>', { silent = true })
+      vim.keymap.set('n', '<leader>tl', ':colorscheme catppuccin-latte<CR>', { silent = true })
     end
   },
   -- lualine
