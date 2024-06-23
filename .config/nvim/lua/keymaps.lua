@@ -15,9 +15,24 @@ map('n', 'dd', '"_dd', { noremap = true, silent = true })
 map("n", "<A-Up>", ":m .-2<CR>==", { desc = "Move line up", noremap = true, silent = true })
 map("n", "<A-Down>", ":m .+1<CR>==", { desc = "Move line down", noremap = true, silent = true })
 map('n', ';', ':', { nowait = true })
+
 map('n', '<Esc>', '<cmd>noh<CR>', { desc = 'Clear highlights', silent = true })
-map('n', '<Tab>', ':bnext<CR>', { desc = "Next buffer", nowait = true, silent = true })
-map('n', '<S-Tab>', ':bprevious<CR>', { desc = "Previous buffer", nowait = true, silent = true })
+map('n', '<Tab>', function()
+  if vim.bo.buftype == 'terminal' then
+    -- do nothing if it's a terminal
+    return
+  else
+    vim.cmd('bnext')
+  end
+end, { desc = "Next buffer", nowait = true, silent = true })
+map('n', '<S-Tab>', function()
+  if vim.bo.buftype == 'terminal' then
+    -- do nothing if it's a terminal
+    return
+  else
+    vim.cmd('bprevious')
+  end
+end, { desc = "Previous buffer", nowait = true, silent = true })
 map('n', '<C-h>', '<C-w>h', { desc = 'Window left' })
 map('n', '<C-l>', '<C-w>l', { desc = 'Window right' })
 map('n', '<C-j>', '<C-w>j', { desc = 'Window down' })
