@@ -92,7 +92,6 @@ alias ssh='TERM=xterm-256color ssh'
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
 export PATH="$(brew --prefix)/opt/python@3.11/libexec/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 export PATH="/usr/local/go/bin/go:$PATH"
 export SYSTEM_VERSION_COMPAT=1
@@ -113,8 +112,6 @@ nvim() {
     fi
 }
 
-alias vim='nvim'
-alias vi='nvim'
 alias v='nvim'
 ```
 
