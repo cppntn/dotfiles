@@ -45,7 +45,7 @@ vim.opt.whichwrap:append "<>[]hl"
 vim.opt.linebreak = true
 
 ------------------------------------ vim scripts ----------------------------------------
-vim.cmd [[autocmd VimLeave * set guicursor=a:ver25]]
+-- vim.cmd [[autocmd VimLeave * set guicursor=a:ver25]]
 vim.cmd [[set autoread]]
 
 
