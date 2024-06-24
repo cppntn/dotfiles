@@ -33,6 +33,7 @@ brew install lua-language-server
 brew install jq
 brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
+brew install hashicorp/tap/terraform-ls
 brew install --cask spaceid
 brew install kubectl 
 brew install rust 

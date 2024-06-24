@@ -66,6 +66,9 @@ return {
           }
         }
       })
+      lspconfig.terraformls.setup({
+        capabilities = capabilities
+      })
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { silent = true })
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, { silent = true })
       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true })
