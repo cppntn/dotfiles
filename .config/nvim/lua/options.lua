@@ -44,6 +44,9 @@ vim.opt.whichwrap:append "<>[]hl"
 
 vim.opt.linebreak = true
 
+-- disable swap files
+vim.opt.swapfile = false
+
 ------------------------------------ vim scripts ----------------------------------------
 -- vim.cmd [[autocmd VimLeave * set guicursor=a:ver25]]
 vim.cmd [[set autoread]]
