@@ -3,33 +3,12 @@ return {
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   -- bufferline
   {
-    "akinsho/bufferline.nvim",
-    event = "VeryLazy",
-    keys = {
-      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>",            desc = "Toggle pin" },
-      { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
-      { "<leader>bo", "<Cmd>BufferLineCloseOthers<CR>",          desc = "Delete other buffers" },
-      { "<leader>br", "<Cmd>BufferLineCloseRight<CR>",           desc = "Delete buffers to the right" },
-      { "<leader>bl", "<Cmd>BufferLineCloseLeft<CR>",            desc = "Delete buffers to the left" },
+    "willothy/nvim-cokeline",
+    dependencies = {
+      "nvim-lua/plenary.nvim",       -- Required for v0.4.0+
+      "nvim-tree/nvim-web-devicons", -- If you want devicons
     },
-    opts = {
-      options = {
-        diagnostics = "nvim_lsp",
-        always_show_bufferline = true,
-        offsets = {
-          {
-            filetype = "NvimTree",
-            text = "Explorer",
-            highlight = "Directory",
-            text_align = "left",
-            separator = true
-          },
-        },
-      },
-    },
-    config = function(_, opts)
-      require("bufferline").setup(opts)
-    end,
+    config = true
   },
   -- catppuccin theme
   {
