@@ -2,7 +2,8 @@
 vim.g.transparency = false
 vim.g.mapleader = " "
 vim.g.python3_host_prog = 'python'
-
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 -------------------------------------- options ------------------------------------------
 vim.opt.laststatus = 3 -- global statusline
 vim.opt.showmode = false

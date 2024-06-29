@@ -29,7 +29,7 @@ return {
     config = function()
       require('lualine').setup({
         options = {
-          theme = 'codedark'
+          theme = 'dracula',
         },
         sections = {
           lualine_c = {
