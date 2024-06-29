@@ -83,9 +83,9 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 -- Close the buffer that was hosting the terminal
-vim.api.nvim_create_autocmd("TermClose", {
-  pattern = "*",
-  callback = function(args)
-    vim.cmd(string.format("bd! %d", args.buf))
-  end,
-})
+-- vim.api.nvim_create_autocmd("TermClose", {
+--   pattern = "*",
+--   callback = function(args)
+--     vim.cmd(string.format("bd! %d", args.buf))
+--   end,
+-- })
