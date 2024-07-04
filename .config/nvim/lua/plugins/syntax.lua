@@ -22,7 +22,9 @@ return {
           "markdown",
           "python",
           "yaml",
-          "go"
+          "go",
+          "groovy",
+          "xml"
         },
         indent = {
           enable = true
