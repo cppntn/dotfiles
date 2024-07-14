@@ -53,13 +53,15 @@ map('n', '<leader>x', function()
     -- Do nothing if it's a terminal
     return
   end
-  local buf_count = vim.fn.len(vim.fn.filter(vim.fn.range(1, vim.fn.bufnr('$')), 'buflisted(v:val)'))
-  if buf_count > 1 then
-    vim.cmd('bp | bd #')
-  else
-    vim.cmd('enew | bd #')
-  end
+  vim.cmd(':BufferClose')
 end, { desc = "Close buffer", noremap = true, silent = true })
+map('n', '<leader>a', function()
+  if vim.bo.buftype == 'terminal' then
+    -- Do nothing if it's a terminal
+    return
+  end
+  vim.cmd(':BufferCloseAllButCurrent')
+end, { desc = "Close all buffers except current", noremap = true, silent = true })
 
 -- Visual mode mappings
 map('v', 'd', '"_d', { noremap = true, silent = true })
