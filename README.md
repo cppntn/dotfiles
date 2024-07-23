@@ -69,12 +69,18 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 vim ~/.zshrc
 ```
 
+Create a symlink for the theme in the custom themes folder:
+
+```bash
+ln -s ~/dotfiles/custom/themes/sonicradish.zsh-theme ~/.oh-my-zsh/custom/themes/sonicradish.zsh-theme
+```
+
 You can put this into `.zshrc`:
 
 ```bash
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="muse"
+ZSH_THEME="sonicradish"
 
 plugins=(git kubectl terraform golang)
 
