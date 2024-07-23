@@ -35,9 +35,14 @@ brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
 brew install hashicorp/tap/terraform-ls
 brew install --cask spaceid
-brew install kubectl 
 brew install rust 
 brew install mysql-client
+brew install cargo
+brew install rust
+brew install redis
+brew install p7zip
+brew install orbstack
+brew install kubectl 
 ```
 
 Install `golang` from: https://go.dev/dl/
@@ -71,7 +76,7 @@ You can put this into `.zshrc`:
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="muse"
 
-plugins=(git kubectl terraform)
+plugins=(git kubectl terraform golang)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,8 +100,8 @@ export PATH="/opt/homebrew/sbin:$PATH"
 export PATH="$(brew --prefix)/opt/python@3.11/libexec/bin:$PATH"
 export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 export PATH="/usr/local/go/bin/go:$PATH"
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export SYSTEM_VERSION_COMPAT=1
-
 export HOMEBREW_OPT="/opt/homebrew/opt"
 
 alias dotfiles='cd $HOME/dotfiles'
@@ -112,7 +117,8 @@ nvim() {
         command nvim "$1"
     fi
 }
-
+alias vim='nvim'
+alias vi='nvim'
 alias v='nvim'
 ```
 
@@ -134,5 +140,4 @@ ln -s ~/dotfiles/.ipython/profile_default/ipython_config.py ~/.ipython/profile_d
 ```
 # install magnet
 # install Flycut
-# install orbstack
 ```
