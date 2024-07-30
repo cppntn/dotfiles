@@ -34,6 +34,7 @@ brew install jq
 brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
 brew install hashicorp/tap/terraform-ls
+brew install hashicorp/tap/packer
 brew install --cask spaceid
 brew install rust 
 brew install mysql-client
