@@ -114,6 +114,7 @@ export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export SYSTEM_VERSION_COMPAT=1
 export HOMEBREW_OPT="/opt/homebrew/opt"
 export KUBECONFIG=$(find ~/.kube/configs -type f | tr '\n' ':')
+export K9S_CONFIG_DIR="$HOME/.k9s"
 
 alias dotfiles='cd $HOME/dotfiles'
 nvim() {
