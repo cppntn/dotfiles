@@ -27,6 +27,7 @@ pip install pyright black
 brew install wget
 brew install htop
 brew install ripgrep
+brew install fzf
 brew install neovim
 brew install tmux
 brew install lua-language-server
@@ -44,6 +45,7 @@ brew install redis
 brew install p7zip
 brew install orbstack
 brew install kubectl 
+brew install hcloud
 ```
 
 Install `golang` from: https://go.dev/dl/
