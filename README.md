@@ -91,20 +91,7 @@ plugins=(git kubectl terraform golang)
 source $ZSH/oh-my-zsh.sh
 
 export LANG=en_US.UTF-8
-
-alias ll='ls -alhp'
-alias llt='ls -talhp'
-
-# Attaches tmux to the last session; creates a new session if none exists.
-alias t='tmux attach || tmux new-session'
-# Attaches tmux to a session (example: ta portal)
-alias ta='tmux attach -t'
-# Creates a new session
-alias ts='tmux new -s'
-# Lists all ongoing sessions
-alias tl='tmux list-sessions'
-
-alias ssh='TERM=xterm-256color ssh'
+export TERM=xterm-256color
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
 export PATH="$(brew --prefix)/opt/python@3.11/libexec/bin:$PATH"
@@ -115,6 +102,14 @@ export SYSTEM_VERSION_COMPAT=1
 export HOMEBREW_OPT="/opt/homebrew/opt"
 export KUBECONFIG=$(find ~/.kube/configs -type f | tr '\n' ':')
 export K9S_CONFIG_DIR="$HOME/.k9s"
+
+alias ll='ls -alhp'
+alias llt='ls -talhp'
+alias t='tmux attach || tmux new-session'
+alias ta='tmux attach -t'
+alias ts='tmux new -s'
+alias tl='tmux list-sessions'
+alias ssh='TERM=xterm-256color ssh'
 
 alias dotfiles='cd $HOME/dotfiles'
 nvim() {
@@ -139,12 +134,13 @@ alias v='nvim'
 cd ~
 git clone https://github.com/cppntn/dotfiles ~/dotfiles
 mkdir -p .config/
+mkdir -p .k9s/skins/
 mkdir -p .ipython/profile_default
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/.config/nvim ~/.config/nvim
 ln -s ~/dotfiles/.config/alacritty ~/.config/alacritty
 ln -s ~/dotfiles/.ipython/profile_default/ipython_config.py ~/.ipython/profile_default/ipython_config.py
-ln -s ~/dotfiles/.k9s ~/.k9s
+ln -s ~/dotfiles/.k9s/skin.yaml ~/.k9s/skins/catppuccin.yaml
 ```
 
 6) Other useful stuff: 
