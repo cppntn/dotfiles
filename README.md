@@ -141,6 +141,7 @@ ln -s ~/dotfiles/.config/nvim ~/.config/nvim
 ln -s ~/dotfiles/.config/alacritty ~/.config/alacritty
 ln -s ~/dotfiles/.ipython/profile_default/ipython_config.py ~/.ipython/profile_default/ipython_config.py
 ln -s ~/dotfiles/.k9s/skin.yaml ~/.k9s/skins/catppuccin.yaml
+ln -s ~/dotfiles/.k9s/config.yaml ~/.k9s/config.yaml
 ```
 
 6) Other useful stuff: 
