@@ -44,7 +44,8 @@ brew install rust
 brew install redis
 brew install p7zip
 brew install orbstack
-brew install kubectl 
+brew install kubectl
+brew install derailed/k9s/k9s
 brew install hcloud
 ```
 
@@ -112,9 +113,9 @@ export PATH="/usr/local/go/bin/go:$PATH"
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export SYSTEM_VERSION_COMPAT=1
 export HOMEBREW_OPT="/opt/homebrew/opt"
+export KUBECONFIG=$(find ~/.kube/configs -type f | tr '\n' ':')
 
 alias dotfiles='cd $HOME/dotfiles'
-
 nvim() {
     if [[ -d $1 ]]; then
         cd "$1" && command nvim +'lua require("nvim-tree.api").tree.open()'
