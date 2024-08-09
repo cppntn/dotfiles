@@ -45,6 +45,7 @@ brew install redis
 brew install p7zip
 brew install orbstack
 brew install kubectl
+brew install helm
 brew install derailed/k9s/k9s
 brew install hcloud
 ```
