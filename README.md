@@ -38,7 +38,6 @@ brew install hashicorp/tap/terraform-ls
 brew install hashicorp/tap/packer
 brew install terragrunt
 brew install --cask spaceid
-brew install rust 
 brew install mysql-client
 brew install cargo
 brew install rust
