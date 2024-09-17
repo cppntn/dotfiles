@@ -49,6 +49,7 @@ brew install kubectl
 brew install helm
 brew install derailed/k9s/k9s
 brew install hcloud
+brew install ariga/tap/atlas
 ```
 
 Install `golang` from: https://go.dev/dl/
