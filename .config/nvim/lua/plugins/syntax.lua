@@ -24,7 +24,8 @@ return {
           "yaml",
           "go",
           "groovy",
-          "xml"
+          "xml",
+          "hcl"
         },
         indent = {
           enable = true
