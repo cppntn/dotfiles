@@ -11,21 +11,17 @@ return {
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
           "vim",
-          "vimdoc",
           "dockerfile",
           "terraform",
           "query",
           "lua",
-          "c",
           "hcl",
-          "ruby",
           "markdown",
           "python",
           "yaml",
           "go",
           "groovy",
           "xml",
-          "hcl"
         },
         indent = {
           enable = true
