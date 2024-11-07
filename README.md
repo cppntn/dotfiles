@@ -48,6 +48,7 @@ brew install kubectl
 brew install helm
 brew install derailed/k9s/k9s
 brew install hcloud
+brew install postgresql
 brew install ariga/tap/atlas
 brew install --cask dbeaver-community
 ```
