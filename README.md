@@ -23,7 +23,8 @@ defaults write org.alacritty AppleFontSmoothing -int 0
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install grep
 brew install python@3.11
-pip install pyright black
+brew install pyright
+pip install black
 brew install wget
 brew install htop
 brew install ripgrep
