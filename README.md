@@ -17,6 +17,11 @@ brew install --cask alacritty
 defaults write org.alacritty AppleFontSmoothing -int 0
 ```
 
+```bash
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
 3) Install brew and other needed packages
 
 ```bash
@@ -29,15 +34,14 @@ brew install wget
 brew install htop
 brew install ripgrep
 brew install fzf
-brew install neovim
 brew install tmux
-brew install lua-language-server
 brew install jq
 brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
 brew install hashicorp/tap/terraform-ls
 brew install hashicorp/tap/packer
 brew install terragrunt
+brew install tflint
 brew install --cask spaceid
 brew install mysql-client
 brew install cargo
@@ -78,7 +82,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 vim ~/.zshrc
 ```
 
-Create a symlink for the theme in the custom themes folder:
+Create a symlink for the themes in the custom themes folder:
 
 ```bash
 ln -s ~/dotfiles/custom/themes/sonicradish.zsh-theme ~/.oh-my-zsh/custom/themes/sonicradish.zsh-theme
@@ -117,23 +121,22 @@ alias tl='tmux list-sessions'
 alias ssh='TERM=xterm-256color ssh'
 
 alias dotfiles='cd $HOME/dotfiles'
-nvim() {
+vim() {
     if [[ -d $1 ]]; then
-        cd "$1" && command nvim +'lua require("nvim-tree.api").tree.open()'
+        cd "$1" && command vim +"NERDTree"
     elif [[ -f $1 ]]; then
-        command nvim "$1"
+        command vim "$1"
     elif [[ -z $1 ]]; then
-        command nvim +'lua require("nvim-tree.api").tree.open()'
+        command vim +"NERDTree"
     else
-        command nvim "$1"
+        command vim "$1"
     fi
 }
-alias vim='nvim'
-alias vi='nvim'
-alias v='nvim'
+alias vi='vim'
+alias v='vim'
 ```
 
-5) Set dotfiles symlinks for tmux, nvim and alacritty
+5) Set dotfiles symlinks for tmux, vim and alacritty
 
 ```bash
 cd ~
@@ -141,12 +144,13 @@ git clone https://github.com/cppntn/dotfiles ~/dotfiles
 mkdir -p .config/
 mkdir -p .k9s/skins/
 mkdir -p .ipython/profile_default
+mkdir -p .vim/
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
-ln -s ~/dotfiles/.config/nvim ~/.config/nvim
 ln -s ~/dotfiles/.config/alacritty ~/.config/alacritty
 ln -s ~/dotfiles/.ipython/profile_default/ipython_config.py ~/.ipython/profile_default/ipython_config.py
 ln -s ~/dotfiles/.k9s/skin.yaml ~/.k9s/skins/catppuccin.yaml
 ln -s ~/dotfiles/.k9s/config.yaml ~/.k9s/config.yaml
+ln -s ~/dotfiles/colors ~/.vim/colors
 ```
 
 6) Other useful stuff: 
