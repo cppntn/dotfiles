@@ -4,7 +4,6 @@ Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Add these for Python support
 Plug 'dense-analysis/ale'
 Plug 'vim-python/python-syntax'
 Plug 'preservim/nerdtree'
@@ -40,9 +39,6 @@ let g:NERDTreeDirArrowExpandable='>'
 let g:NERDTreeDirArrowCollapsible='v'
 let g:NERDTreeShowHidden=1
 let g:NERDTreeIgnore = ['^\.DS_Store$', '\.git$']
-
-" Auto close NERDTree if it's the last window
-" autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " IndentLine configuration
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
