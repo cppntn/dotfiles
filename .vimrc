@@ -63,6 +63,12 @@ let g:gitgutter_sign_removed = '▏'
 let g:gitgutter_sign_removed_first_line = '▔'
 let g:gitgutter_sign_modified_removed = '▋'
 
+" Auto-refresh gitgutter when focusing Vim or entering a buffer
+augroup GitGutterRefreshOnFocus
+    autocmd!
+    autocmd FocusGained,BufEnter * let g:gitgutter_async=1 | GitGutter
+augroup END
+
 " Force sign column to be visible
 set signcolumn=yes
 
@@ -73,7 +79,6 @@ highlight GitGutterDelete guifg=#ff0000 ctermfg=196
 
 " Map space+ph to preview hunk
 nnoremap <leader>ph :GitGutterPreviewHunk<CR>
-
 
 " General Settings
 set encoding=utf-8
@@ -125,12 +130,6 @@ set statusline+=%l           " Current line number
 set statusline+=\/%L,        " Total lines
 set statusline+=\ col\       " Literal 'col'
 set statusline+=%c)          " Column number
-
-" Hide statusline content in netrw only
-"augroup NetrwGroup
-"    autocmd!
-"    autocmd FileType netrw setlocal statusline=\
-"augroup END
 
 " Disable line numbers in terminal
 augroup TerminalStuff
@@ -200,8 +199,7 @@ function! CloseBuffer()
     let l:current_buf = bufnr('%')
 
     " Switch to next buffer in this window
-    if &filetype != 'netrw'
-        " Find a non-netrw buffer to switch to
+    if &filetype != 'nerdtree'
         bnext
         if bufnr('%') == l:current_buf
             bprevious
@@ -290,6 +288,10 @@ nnoremap <leader>x :call CloseBuffer()<CR>
 nnoremap <Tab> :call NextBuffer()<CR>
 nnoremap <S-Tab> :call PreviousBuffer()<CR>
 
+" NERDTree mappings
+autocmd FileType nerdtree nnoremap <buffer> <Tab> <nop>
+autocmd FileType nerdtree nnoremap <buffer> <S-Tab> <nop
+
 " File Explorer mapping
 nnoremap <C-n> :NERDTreeToggle<CR>
 
@@ -318,7 +320,7 @@ autocmd FileType python setlocal
 " Python specific keymaps
 autocmd FileType python nnoremap <buffer> gd :ALEGoToDefinition<CR>
 autocmd FileType python nnoremap <buffer> K :ALEHover<CR>
-autocmd FileType python nnoremap <buffer> <leader>ca :ALECodeAction<CR>
+"autocmd FileType python nnoremap <buffer> <leader>ca :ALECodeAction<CR>
 
 " Configure path for better file finding
 set path+=**
@@ -340,7 +342,7 @@ autocmd BufWritePre *.tf silent! !terraform fmt %
 " Terraform specific keymaps (similar to what we have for Python)
 autocmd FileType terraform nnoremap <buffer> gd :ALEGoToDefinition<CR>
 autocmd FileType terraform nnoremap <buffer> K :ALEHover<CR>
-autocmd FileType terraform nnoremap <buffer> <leader>ca :ALECodeAction<CR>
+"autocmd FileType terraform nnoremap <buffer> <leader>ca :ALECodeAction<CR>
 
 ""
 
@@ -435,3 +437,29 @@ elseif executable('ag')
     set grepformat=%f:%l:%c:%m
 endif
 
+" Comment/uncomment lines
+function! ToggleComment()
+    if has_key(b:, 'comment_text')
+        let comment_text = b:comment_text
+    else
+        if &commentstring =~ '%s$'
+            let comment_text = substitute(&commentstring, '%s$', '', '')
+        else
+            let comment_text = substitute(&commentstring, '%s', '', '')
+        endif
+    endif
+    
+    let line_text = getline('.')
+    
+    if line_text =~ '^' . escape(comment_text, '/*') . '\s'
+        " Remove comment and following space from the beginning of the line
+        execute 's/^' . escape(comment_text, '/*') . '\s//'
+    else
+        " Add comment at the beginning of the line with a space
+        execute 's/^/' . escape(comment_text, '/*') . ' /'
+    endif
+endfunction
+
+" Map leader / to toggle comments for visual and normal mode
+vnoremap <leader>/ :call ToggleComment()<CR>
+nnoremap <leader>/ :call ToggleComment()<CR>
