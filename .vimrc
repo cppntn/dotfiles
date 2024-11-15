@@ -92,7 +92,7 @@ set smartindent              " Smart indenting
 set linebreak                " Break lines at word boundary
 set scrolloff=8              " Keep 8 lines above/below cursor
 set sidescrolloff=8          " Keep 8 characters left/right of cursor
-set nowrap                   " Don't wrap lines
+set wrap                    " Wrap lines
 set ignorecase              " Case insensitive search
 set smartcase               " Case sensitive if contains uppercase
 set incsearch               " Search as characters are entered
