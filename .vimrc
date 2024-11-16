@@ -108,6 +108,10 @@ set timeoutlen=400         " Faster key sequence completion
 set splitright             " Split windows right
 set splitbelow             " Split windows below
 
+" go to previous/next line with h,l,left arrow and right arrow
+" when cursor reaches end/beginning of line
+set whichwrap+=<>[]hl
+
 " Cursor settings
 let &t_SI = "\e[5 q"    " Insert mode - slim vertical cursor
 let &t_EI = "\e[2 q"    " Normal mode - block cursor
@@ -121,12 +125,13 @@ set statusline+=%m            " Modified flag
 set statusline+=%r            " Readonly flag
 set statusline+=%h            " Help file flag
 set statusline+=%w            " Preview window flag
-set statusline+=/%Y)          " File type [PYTHON][RUBY]
-set statusline+=\ (line\      " Literal 'line'
+set statusline+=\ [%Y]          " File type [PYTHON][RUBY]
+set statusline+=\ %=          " Right align 
+set statusline+=\ [line\      " Literal 'line'
 set statusline+=%l           " Current line number
 set statusline+=\/%L,        " Total lines
 set statusline+=\ col\       " Literal 'col'
-set statusline+=%c)          " Column number
+set statusline+=%c]          " Column number
 
 " Disable line numbers in terminal
 augroup TerminalStuff
@@ -138,8 +143,8 @@ augroup END
 inoremap <C-a> <ESC>^i
 inoremap <C-e> <End>
 inoremap <C-d> <Del>
-inoremap <C-k> <C-o>D
-inoremap <C-s> <Esc>:w<CR>
+inoremap <expr> <C-k> getline('.') == '' ? '<C-o>"_dd' : '<C-o>"_D'
+inoremap <C-s> <C-o>:w<CR>
 
 " Key Mappings - Normal Mode
 nnoremap d "_d
@@ -169,6 +174,12 @@ vnoremap d "_d
 vnoremap D "_D
 vnoremap < <gv
 vnoremap > >gv
+
+" Key Mappings - Command Mode
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
+nnoremap <expr> <Down> v:count ? 'j' : 'gj'
+nnoremap <expr> <Up> v:count ? 'k' : 'gk'
 
 " Terminal Mode Mappings
 tnoremap <C-x> <C-\><C-n>
