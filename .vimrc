@@ -10,6 +10,7 @@ Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'hashivim/vim-terraform'
 Plug 'github/copilot.vim'
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 " Basic Settings
@@ -80,7 +81,6 @@ nnoremap <leader>ph :GitGutterPreviewHunk<CR>
 " General Settings
 set encoding=utf-8
 set number                      " Show line numbers
-set norelativenumber             " Show relative line numbers
 set cursorline                " Highlight current line
 set showmode                  " Show current mode
 set showcmd                   " Show command in bottom bar
@@ -185,14 +185,14 @@ nnoremap <expr> <Up> v:count ? 'k' : 'gk'
 tnoremap <C-x> <C-\><C-n>
 
 " FZF mappings
-nnoremap <leader>ff :Files<CR>
-nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>ff <C-w>l:Files<CR>
+nnoremap <leader>fb <C-w>l:Buffers<CR>
 " Custom Rg command to include hidden files
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
-nnoremap <leader>fw :Rg<CR>
+nnoremap <leader>fw <C-w>l:Rg<CR>
 
 " Function to close buffer while maintaining window layout
 function! CloseBuffer()
@@ -309,7 +309,6 @@ colorscheme catppuccin_mocha     " Default colorscheme, you can change this
 
 """"""""""""""""""""""" Python specific settings""""""""""""
 let g:python_highlight_all = 1
-set tags=tags
 
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
@@ -337,22 +336,10 @@ set wildignore+=*/__pycache__/*,*.pyc
 
 
 """"""""""""""""""""""" Terraform specific settings""""""""""""""""""""
-" Basic terraform settings
-let g:terraform_fmt_on_save = 1
-let g:terraform_align = 1
-" Syntax highlighting
-autocmd BufNewFile,BufRead *.tf,*.tfvars set filetype=terraform
-autocmd BufNewFile,BufRead *.hcl set filetype=hcl
-
-" Format on save using terraform fmt
-autocmd BufWritePre *.tf silent! !terraform fmt %
 
 " Terraform specific keymaps (similar to what we have for Python)
 autocmd FileType terraform nnoremap <buffer> gd :ALEGoToDefinition<CR>
 autocmd FileType terraform nnoremap <buffer> K :ALEHover<CR>
-"autocmd FileType terraform nnoremap <buffer> <leader>ca :ALECodeAction<CR>
-
-""
 
 " ALE Configuration for Python, Terraform, et al.
 let g:ale_linters = {
@@ -409,32 +396,22 @@ augroup TodoHighlights
     autocmd Syntax * highlight myTest guifg=#61AFEF ctermfg=75 gui=bold
 augroup END
 
-" Function to search for to-do comments using fzf
 function! SearchTodos()
-    " Use an array of patterns we want to match
-    let patterns = [
-        \ 'TODO:',
-        \ 'FIXME:',
-        \ 'XXX:',
-        \ 'HACK:',
-        \ 'INFO:',
-        \ 'NOTE:',
-        \ 'WARN:',
-        \ 'WARNING:',
-        \ 'PERF:',
-        \ 'TEST:',
-        \ 'TESTING:'
-    \ ]
+    let todo_keywords = ['TODO', 'FIXME', 'XXX', 'HACK', 'INFO', 'NOTE', 'WARN', 'WARNING', 'PERF', 'TEST', 'TESTING']
+    " Handle different comment styles: //, #, ", /* */
+    let comment_chars = '["//#]?\s*'
+    let keywords_pattern = join(todo_keywords, '|')
+    let search_query = comment_chars . '(' . keywords_pattern . '):'
     
-    " Join patterns with OR operator
-    let search_pattern = join(patterns, '|')
-    
-    " Execute the Rg command with proper escaping
-    execute 'Rg "' . search_pattern . '"'
+    " Use fzf#vim#grep instead of execute 'Rg'
+    call fzf#vim#grep(
+        \ 'rg --hidden --column --line-number --no-heading --color=always --smart-case -- ' . shellescape(search_query),
+        \ 1,
+        \ fzf#vim#with_preview(),
+        \ 0)
 endfunction
 
-" Map leader ft to search TODOs
-nnoremap <leader>ft :call SearchTodos()<CR>
+nnoremap <leader>ft <C-w>l:call SearchTodos()<CR>
 
 " Use ripgrep for faster searching if available
 if executable('rg')
@@ -445,29 +422,6 @@ elseif executable('ag')
     set grepformat=%f:%l:%c:%m
 endif
 
-" Comment/uncomment lines
-function! ToggleComment()
-    if has_key(b:, 'comment_text')
-        let comment_text = b:comment_text
-    else
-        if &commentstring =~ '%s$'
-            let comment_text = substitute(&commentstring, '%s$', '', '')
-        else
-            let comment_text = substitute(&commentstring, '%s', '', '')
-        endif
-    endif
-    
-    let line_text = getline('.')
-    
-    if line_text =~ '^' . escape(comment_text, '/*') . '\s'
-        " Remove comment and following space from the beginning of the line
-        execute 's/^' . escape(comment_text, '/*') . '\s//'
-    else
-        " Add comment at the beginning of the line with a space
-        execute 's/^/' . escape(comment_text, '/*') . ' /'
-    endif
-endfunction
-
 " Map leader / to toggle comments for visual and normal mode
-vnoremap <leader>/ :call ToggleComment()<CR>
-nnoremap <leader>/ :call ToggleComment()<CR>
+nnoremap <leader>/ :Commentary<CR>
+vnoremap <leader>/ :Commentary<CR>
