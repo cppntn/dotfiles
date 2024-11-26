@@ -298,7 +298,7 @@ nnoremap <S-Tab> :call PreviousBuffer()<CR>
 
 " NERDTree mappings
 autocmd FileType nerdtree nnoremap <buffer> <Tab> <nop>
-autocmd FileType nerdtree nnoremap <buffer> <S-Tab> <nop
+autocmd FileType nerdtree nnoremap <buffer> <S-Tab> <nop>
 
 " File Explorer mapping
 nnoremap <C-n> :NERDTreeToggle<CR>
