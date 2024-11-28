@@ -41,20 +41,15 @@ brew install hashicorp/tap/terraform
 brew install hashicorp/tap/terraform-ls
 brew install hashicorp/tap/packer
 brew install terragrunt
-brew install tflint
 brew install --cask spaceid
 brew install mysql-client
-brew install cargo
-brew install rust
 brew install redis
-brew install p7zip
 brew install orbstack
 brew install kubectl
 brew install helm
 brew install derailed/k9s/k9s
 brew install hcloud
 brew install postgresql
-brew install ariga/tap/atlas
 brew install --cask dbeaver-community
 ```
 
@@ -103,7 +98,7 @@ export LANG=en_US.UTF-8
 export TERM=xterm-256color
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
-export PATH="$(brew --prefix)/opt/python@3.11/libexec/bin:$PATH"
+export PATH="$(brew --prefix)/opt/python@3.12/libexec/bin:$PATH"
 export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 export PATH="/usr/local/go/bin/go:$PATH"
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
@@ -145,6 +140,7 @@ mkdir -p .config/
 mkdir -p .k9s/skins/
 mkdir -p .ipython/profile_default
 mkdir -p .vim/
+ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/.config/alacritty ~/.config/alacritty
 ln -s ~/dotfiles/.ipython/profile_default/ipython_config.py ~/.ipython/profile_default/ipython_config.py
@@ -158,4 +154,5 @@ ln -s ~/dotfiles/colors ~/.vim/colors
 ```
 # install magnet
 # install Flycut
+# install OpenVPN
 ```
