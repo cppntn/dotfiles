@@ -41,6 +41,13 @@ let g:NERDTreeDirArrowCollapsible='v'
 let g:NERDTreeShowHidden=1
 let g:NERDTreeIgnore = ['^\.DS_Store$', '\.git$']
 
+" NERDTree mappings
+autocmd FileType nerdtree nnoremap <buffer> <Tab> <nop>
+autocmd FileType nerdtree nnoremap <buffer> <S-Tab> <nop>
+
+" File Explorer mapping
+nnoremap <C-n> :NERDTreeToggle<CR>
+
 " IndentLine configuration
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_first_char = '│'
@@ -187,12 +194,12 @@ tnoremap <C-x> <C-\><C-n>
 " FZF mappings
 nnoremap <leader>ff <C-w>l:Files<CR>
 nnoremap <leader>fb <C-w>l:Buffers<CR>
+nnoremap <leader>fw <C-w>l:Rg<CR>
 " Custom Rg command to include hidden files
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
-nnoremap <leader>fw <C-w>l:Rg<CR>
 
 " Function to close buffer while maintaining window layout
 function! CloseBuffer()
@@ -296,16 +303,10 @@ nnoremap <leader>x :call CloseBuffer()<CR>
 nnoremap <Tab> :call NextBuffer()<CR>
 nnoremap <S-Tab> :call PreviousBuffer()<CR>
 
-" NERDTree mappings
-autocmd FileType nerdtree nnoremap <buffer> <Tab> <nop>
-autocmd FileType nerdtree nnoremap <buffer> <S-Tab> <nop>
-
-" File Explorer mapping
-nnoremap <C-n> :NERDTreeToggle<CR>
-
 " Colors and Theme
 set termguicolors
-colorscheme catppuccin_mocha     " Default colorscheme, you can change this
+colorscheme caffe
+" colorscheme mirage
 
 " ALE Configuration
 let g:ale_sign_error = '✘'
