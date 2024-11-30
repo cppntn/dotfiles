@@ -309,7 +309,6 @@ colorscheme catppuccin_mocha     " Default colorscheme, you can change this
 
 """"""""""""""""""""""" Python specific settings""""""""""""
 let g:python_highlight_all = 1
-let g:ale_python_pyright_use_global = 1
 
 let g:ale_python_pyright_config = {
 \   'python': {
