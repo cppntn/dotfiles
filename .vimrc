@@ -309,6 +309,14 @@ colorscheme catppuccin_mocha     " Default colorscheme, you can change this
 
 """"""""""""""""""""""" Python specific settings""""""""""""
 let g:python_highlight_all = 1
+let g:ale_python_pyright_use_global = 1
+
+let g:ale_python_pyright_config = {
+\   'python': {
+\     'pythonPath': '/opt/homebrew/opt/python@3.12/libexec/bin/python',
+\     'extraPaths': ['/opt/homebrew/lib/python3.12/site-packages']
+\   }
+\}
 
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
