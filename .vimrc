@@ -307,19 +307,30 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 set termguicolors
 colorscheme catppuccin_mocha     " Default colorscheme, you can change this
 
-""""""""""""""""""""""" Python specific settings""""""""""""
-let g:python_highlight_all = 1
-
-let g:ale_python_pyright_config = {
-\   'python': {
-\     'pythonPath': '/opt/homebrew/opt/python@3.12/libexec/bin/python',
-\     'extraPaths': ['/opt/homebrew/lib/python3.12/site-packages']
-\   }
-\}
-
+" ALE Configuration
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_completion_autoimport = 1
+
+""""""""""""""""""""""" Python specific settings""""""""""""
+let g:python_highlight_all = 1
+" Enable all diagnostic levels for pyright
+let g:ale_python_pyright_config = {
+\   'python': {
+\     'pythonPath': '/opt/homebrew/opt/python@3.12/libexec/bin/python',
+\     'extraPaths': ['/opt/homebrew/lib/python3.12/site-packages'],
+\     'analysis': {
+\       'diagnosticMode': 'workspace',
+\       'useLibraryCodeForTypes': v:true,
+\       'diagnosticSeverityOverrides': {
+\         'reportUnusedVariable': 'warning',
+\         'reportUnusedImport': 'warning'
+\       }
+\     }
+\   }
+\}
 " Python specific indentation
 autocmd FileType python setlocal
     \ tabstop=4
@@ -334,7 +345,6 @@ autocmd FileType python setlocal
 " Python specific keymaps
 autocmd FileType python nnoremap <buffer> gd :ALEGoToDefinition<CR>
 autocmd FileType python nnoremap <buffer> K :ALEHover<CR>
-"autocmd FileType python nnoremap <buffer> <leader>ca :ALECodeAction<CR>
 
 " Configure path for better file finding
 set path+=**
