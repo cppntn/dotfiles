@@ -51,6 +51,7 @@ brew install derailed/k9s/k9s
 brew install hcloud
 brew install postgresql
 brew install --cask dbeaver-community
+brew install ansible
 ```
 
 Install `golang` from: https://go.dev/dl/
