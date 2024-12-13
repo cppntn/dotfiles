@@ -52,6 +52,7 @@ brew install hcloud
 brew install postgresql
 brew install --cask dbeaver-community
 brew install ansible
+brew install stripe/stripe-cli/stripe
 ```
 
 Install `golang` from: https://go.dev/dl/
