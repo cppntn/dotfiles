@@ -398,6 +398,12 @@ augroup JsonFormatting
     autocmd BufWritePre *.json call FormatJSON()
 augroup END
 
+" Dockerfile syntax highlighting with pattern matching
+augroup dockerfile_ft
+  autocmd!
+  autocmd BufNewFile,BufRead Dockerfile,Dockerfile*,*.dockerfile set filetype=dockerfile
+  autocmd BufNewFile,BufRead docker-compose*.yml set filetype=docker-compose
+augroup END
 
 """"""""""""""""""""" to-do comments"""""""""""""""""""""""""
 
